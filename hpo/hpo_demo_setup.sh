@@ -188,6 +188,7 @@ function hpo_experiments() {
 	echo "Start a new experiment with search space json"
 	## Step 1 : Start a new experiment with provided search space.
 	
+	# HPO_TESTING_START: JSON validation and payload construction fix
 	# Validate search space JSON before constructing payload
 	echo "${exp_json}" | jq empty || err_exit "Error: Invalid search space JSON"
 	echo "✅ Search space JSON is valid"
@@ -225,6 +226,7 @@ function hpo_experiments() {
 			fi
 		fi
 	done
+	# HPO_TESTING_END: JSON validation and payload construction fix
 
 	## Looping through trials of an experiment
 	echo
@@ -243,6 +245,7 @@ function hpo_experiments() {
 		echo "${HPO_CONFIG}" | tee hpo_config.json
 
 		## Step 3: Run the benchmark with HPO config.
+		# HPO_TESTING_START: Benchmark execution commented out for testing
 		## COMMENTED OUT FOR TESTING: We're only testing if HPO experiment creation works
 		## To test the full flow, uncomment the benchmark execution below
 		echo "#######################################"
@@ -266,6 +269,7 @@ function hpo_experiments() {
 		echo "   obj_result=${obj_result}"
 		echo "   trial_state=${trial_state}"
 		echo
+		# HPO_TESTING_END: Benchmark execution commented out for testing
 
 		## Only for now: To avoid mising results incase the HPO is aborted
 		cat experiment-output.csv
