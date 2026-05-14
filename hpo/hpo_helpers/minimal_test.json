@@ -1,0 +1,25 @@
+{
+  "experiment_name": "minimal_test",
+  "experiment_id": "minimal_test",
+  "total_trials": 1,
+  "parallel_trials": 1,
+  "objective_function": "Throughput",
+  "value_type": "float",
+  "hpo_algo_impl": "optuna_tpe",
+  "direction": "maximize",
+  "function_variables": [
+    {
+      "name": "Throughput",
+      "value_type": "float"
+    }
+  ],
+  "tunables": [
+    {
+      "name": "CompileThreshold",
+      "value_type": "integer",
+      "upper_bound": 2000,
+      "lower_bound": 1000,
+      "step": 100
+    }
+  ]
+}
